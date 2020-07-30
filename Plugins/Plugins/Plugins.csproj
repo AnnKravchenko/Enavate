@@ -73,6 +73,7 @@
     <Compile Include="CreateCall.cs" />
     <Compile Include="CreateTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QuoteProducts.cs" />
     <Compile Include="Task-Call.cs" />
   </ItemGroup>
   <ItemGroup>

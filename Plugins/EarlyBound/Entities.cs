@@ -5373,6 +5373,1739 @@ namespace CrmEarlyBound
 		}
 	}
 	
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
+	public enum QuoteState
+	{
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Draft = 0,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Active = 1,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Won = 2,
+		
+		[System.Runtime.Serialization.EnumMemberAttribute()]
+		Closed = 3,
+	}
+	
+	/// <summary>
+	/// Formal offer for products and/or services, proposed at specific prices and related payment terms, which is sent to a prospective customer.
+	/// </summary>
+	[System.Runtime.Serialization.DataContractAttribute()]
+	[Microsoft.Xrm.Sdk.Client.EntityLogicalNameAttribute("quote")]
+	[System.CodeDom.Compiler.GeneratedCodeAttribute("CrmSvcUtil", "9.1.0.45")]
+	public partial class Quote : Microsoft.Xrm.Sdk.Entity, System.ComponentModel.INotifyPropertyChanging, System.ComponentModel.INotifyPropertyChanged
+	{
+		
+		/// <summary>
+		/// Default Constructor.
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public Quote() : 
+				base(EntityLogicalName)
+		{
+		}
+		
+		public const string EntityLogicalName = "quote";
+		
+		public const string EntitySchemaName = "Quote";
+		
+		public const string PrimaryIdAttribute = "quoteid";
+		
+		public const string PrimaryNameAttribute = "name";
+		
+		public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+		
+		public event System.ComponentModel.PropertyChangingEventHandler PropertyChanging;
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanged(string propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		[System.Diagnostics.DebuggerNonUserCode()]
+		private void OnPropertyChanging(string propertyName)
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, new System.ComponentModel.PropertyChangingEventArgs(propertyName));
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the account with which the quote is associated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("accountid")]
+		public Microsoft.Xrm.Sdk.EntityReference AccountId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("accountid");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the billing address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_addressid")]
+		public System.Nullable<System.Guid> BillTo_AddressId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("billto_addressid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_AddressId");
+				this.SetAttributeValue("billto_addressid", value);
+				this.OnPropertyChanged("BillTo_AddressId");
+			}
+		}
+		
+		/// <summary>
+		/// Type the city for the customer's billing address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_city")]
+		public string BillTo_City
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_city");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_City");
+				this.SetAttributeValue("billto_city", value);
+				this.OnPropertyChanged("BillTo_City");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the complete Bill To address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_composite")]
+		public string BillTo_Composite
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_composite");
+			}
+		}
+		
+		/// <summary>
+		/// Type the primary contact name at the customer's billing address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_contactname")]
+		public string BillTo_ContactName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_contactname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_ContactName");
+				this.SetAttributeValue("billto_contactname", value);
+				this.OnPropertyChanged("BillTo_ContactName");
+			}
+		}
+		
+		/// <summary>
+		/// Type the country or region for the customer's billing address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_country")]
+		public string BillTo_Country
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_country");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_Country");
+				this.SetAttributeValue("billto_country", value);
+				this.OnPropertyChanged("BillTo_Country");
+			}
+		}
+		
+		/// <summary>
+		/// Type the fax number for the customer's billing address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_fax")]
+		public string BillTo_Fax
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_fax");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_Fax");
+				this.SetAttributeValue("billto_fax", value);
+				this.OnPropertyChanged("BillTo_Fax");
+			}
+		}
+		
+		/// <summary>
+		/// Type the first line of the customer's billing address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_line1")]
+		public string BillTo_Line1
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_line1");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_Line1");
+				this.SetAttributeValue("billto_line1", value);
+				this.OnPropertyChanged("BillTo_Line1");
+			}
+		}
+		
+		/// <summary>
+		/// Type the second line of the customer's billing address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_line2")]
+		public string BillTo_Line2
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_line2");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_Line2");
+				this.SetAttributeValue("billto_line2", value);
+				this.OnPropertyChanged("BillTo_Line2");
+			}
+		}
+		
+		/// <summary>
+		/// Type the third line of the billing address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_line3")]
+		public string BillTo_Line3
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_line3");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_Line3");
+				this.SetAttributeValue("billto_line3", value);
+				this.OnPropertyChanged("BillTo_Line3");
+			}
+		}
+		
+		/// <summary>
+		/// Type a name for the customer's billing address, such as "Headquarters" or "Field office", to identify the address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_name")]
+		public string BillTo_Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_Name");
+				this.SetAttributeValue("billto_name", value);
+				this.OnPropertyChanged("BillTo_Name");
+			}
+		}
+		
+		/// <summary>
+		/// Type the ZIP Code or postal code for the billing address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_postalcode")]
+		public string BillTo_PostalCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_postalcode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_PostalCode");
+				this.SetAttributeValue("billto_postalcode", value);
+				this.OnPropertyChanged("BillTo_PostalCode");
+			}
+		}
+		
+		/// <summary>
+		/// Type the state or province for the billing address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_stateorprovince")]
+		public string BillTo_StateOrProvince
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_stateorprovince");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_StateOrProvince");
+				this.SetAttributeValue("billto_stateorprovince", value);
+				this.OnPropertyChanged("BillTo_StateOrProvince");
+			}
+		}
+		
+		/// <summary>
+		/// Type the phone number for the customer's billing address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("billto_telephone")]
+		public string BillTo_Telephone
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("billto_telephone");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("BillTo_Telephone");
+				this.SetAttributeValue("billto_telephone", value);
+				this.OnPropertyChanged("BillTo_Telephone");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the campaign that the order was created from.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("campaignid")]
+		public Microsoft.Xrm.Sdk.EntityReference CampaignId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("campaignid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CampaignId");
+				this.SetAttributeValue("campaignid", value);
+				this.OnPropertyChanged("CampaignId");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the date when the quote was closed to indicate the expiration, revision, or cancellation date.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("closedon")]
+		public System.Nullable<System.DateTime> ClosedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("closedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ClosedOn");
+				this.SetAttributeValue("closedon", value);
+				this.OnPropertyChanged("ClosedOn");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the contact associated with the quote.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("contactid")]
+		public Microsoft.Xrm.Sdk.EntityReference ContactId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("contactid");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who created the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdby");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the date and time when the record was created. The date and time are displayed in the time zone selected in Microsoft Dynamics CRM options.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdon")]
+		public System.Nullable<System.DateTime> CreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("createdon");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who created the record on behalf of another user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("createdonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference CreatedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("createdonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CreatedOnBehalfBy");
+				this.SetAttributeValue("createdonbehalfby", value);
+				this.OnPropertyChanged("CreatedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Select the customer account or contact to provide a quick link to additional customer details, such as account information, activities, and opportunities.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("customerid")]
+		public Microsoft.Xrm.Sdk.EntityReference CustomerId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("customerid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("CustomerId");
+				this.SetAttributeValue("customerid", value);
+				this.OnPropertyChanged("CustomerId");
+			}
+		}
+		
+		/// <summary>
+		/// Type additional information to describe the quote, such as the products or services offered or details about the customer's product preferences.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("description")]
+		public string Description
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("description");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Description");
+				this.SetAttributeValue("description", value);
+				this.OnPropertyChanged("Description");
+			}
+		}
+		
+		/// <summary>
+		/// Type the discount amount for the quote if the customer is eligible for special savings.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("discountamount")]
+		public Microsoft.Xrm.Sdk.Money DiscountAmount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("discountamount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("DiscountAmount");
+				this.SetAttributeValue("discountamount", value);
+				this.OnPropertyChanged("DiscountAmount");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the Discount Amount field converted to the system's default base currency for reporting purposes. The calculation uses the exchange rate specified in the Currencies area.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("discountamount_base")]
+		public Microsoft.Xrm.Sdk.Money DiscountAmount_Base
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("discountamount_base");
+			}
+		}
+		
+		/// <summary>
+		/// Type the discount rate that should be applied to the Detail Amount field to include additional savings for the customer in the quote.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("discountpercentage")]
+		public System.Nullable<decimal> DiscountPercentage
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<decimal>>("discountpercentage");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("DiscountPercentage");
+				this.SetAttributeValue("discountpercentage", value);
+				this.OnPropertyChanged("DiscountPercentage");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the date when the quote pricing is effective or was first communicated to the customer.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("effectivefrom")]
+		public System.Nullable<System.DateTime> EffectiveFrom
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("effectivefrom");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("EffectiveFrom");
+				this.SetAttributeValue("effectivefrom", value);
+				this.OnPropertyChanged("EffectiveFrom");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the expiration date or last day the quote pricing is effective for the customer.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("effectiveto")]
+		public System.Nullable<System.DateTime> EffectiveTo
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("effectiveto");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("EffectiveTo");
+				this.SetAttributeValue("effectiveto", value);
+				this.OnPropertyChanged("EffectiveTo");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the conversion rate of the record's currency. The exchange rate is used to convert all money fields in the record from the local currency to the system's default currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("exchangerate")]
+		public System.Nullable<decimal> ExchangeRate
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<decimal>>("exchangerate");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the date a decision or order is due from the customer to indicate the expiration date of the quote.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("expireson")]
+		public System.Nullable<System.DateTime> ExpiresOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("expireson");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ExpiresOn");
+				this.SetAttributeValue("expireson", value);
+				this.OnPropertyChanged("ExpiresOn");
+			}
+		}
+		
+		/// <summary>
+		/// Type the cost of freight or shipping for the products included in the quote for use in calculating the Total Amount field.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("freightamount")]
+		public Microsoft.Xrm.Sdk.Money FreightAmount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("freightamount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("FreightAmount");
+				this.SetAttributeValue("freightamount", value);
+				this.OnPropertyChanged("FreightAmount");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the Freight Amount field converted to the system's default base currency for reporting purposes. The calculation uses the exchange rate specified in the Currencies area.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("freightamount_base")]
+		public Microsoft.Xrm.Sdk.Money FreightAmount_Base
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("freightamount_base");
+			}
+		}
+		
+		/// <summary>
+		/// Select the freight terms to make sure shipping charges are processed correctly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("freighttermscode")]
+		public virtual Quote_FreightTermsCode? FreightTermsCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Quote_FreightTermsCode?)(EntityOptionSetEnum.GetEnum(this, "freighttermscode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("FreightTermsCode");
+				this.SetAttributeValue("freighttermscode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("FreightTermsCode");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the data import or data migration that created this record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("importsequencenumber")]
+		public System.Nullable<int> ImportSequenceNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("importsequencenumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ImportSequenceNumber");
+				this.SetAttributeValue("importsequencenumber", value);
+				this.OnPropertyChanged("ImportSequenceNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who last updated the record.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedby");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the date and time when the record was last updated. The date and time are displayed in the time zone selected in Microsoft Dynamics CRM options.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedon")]
+		public System.Nullable<System.DateTime> ModifiedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("modifiedon");
+			}
+		}
+		
+		/// <summary>
+		/// Shows who last updated the record on behalf of another user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("modifiedonbehalfby")]
+		public Microsoft.Xrm.Sdk.EntityReference ModifiedOnBehalfBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("modifiedonbehalfby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ModifiedOnBehalfBy");
+				this.SetAttributeValue("modifiedonbehalfby", value);
+				this.OnPropertyChanged("ModifiedOnBehalfBy");
+			}
+		}
+		
+		/// <summary>
+		/// Type a descriptive name for the quote.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("name")]
+		public string Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("Name");
+				this.SetAttributeValue("name", value);
+				this.OnPropertyChanged("Name");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the opportunity that the quote is related to for reporting and analytics.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("opportunityid")]
+		public Microsoft.Xrm.Sdk.EntityReference OpportunityId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("opportunityid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OpportunityId");
+				this.SetAttributeValue("opportunityid", value);
+				this.OnPropertyChanged("OpportunityId");
+			}
+		}
+		
+		/// <summary>
+		/// Date and time that the record was migrated.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("overriddencreatedon")]
+		public System.Nullable<System.DateTime> OverriddenCreatedOn
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("overriddencreatedon");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OverriddenCreatedOn");
+				this.SetAttributeValue("overriddencreatedon", value);
+				this.OnPropertyChanged("OverriddenCreatedOn");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the user or team who is assigned to manage the record. This field is updated every time the record is assigned to a different user.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("ownerid")]
+		public Microsoft.Xrm.Sdk.EntityReference OwnerId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("ownerid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("OwnerId");
+				this.SetAttributeValue("ownerid", value);
+				this.OnPropertyChanged("OwnerId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the business unit that owns the quote.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningbusinessunit")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningBusinessUnit
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningbusinessunit");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the team who owns the quote.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owningteam")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningTeam
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owningteam");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the user who owns the quote.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("owninguser")]
+		public Microsoft.Xrm.Sdk.EntityReference OwningUser
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("owninguser");
+			}
+		}
+		
+		/// <summary>
+		/// Select the payment terms to indicate when the customer needs to pay the total amount.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("paymenttermscode")]
+		public virtual Quote_PaymentTermsCode? PaymentTermsCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Quote_PaymentTermsCode?)(EntityOptionSetEnum.GetEnum(this, "paymenttermscode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PaymentTermsCode");
+				this.SetAttributeValue("paymenttermscode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("PaymentTermsCode");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the price list associated with this record to make sure the products associated with the campaign are offered at the correct prices.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pricelevelid")]
+		public Microsoft.Xrm.Sdk.EntityReference PriceLevelId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("pricelevelid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PriceLevelId");
+				this.SetAttributeValue("pricelevelid", value);
+				this.OnPropertyChanged("PriceLevelId");
+			}
+		}
+		
+		/// <summary>
+		/// Pricing error for the quote.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("pricingerrorcode")]
+		public virtual Qooi_PricingErrorCode? PricingErrorCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Qooi_PricingErrorCode?)(EntityOptionSetEnum.GetEnum(this, "pricingerrorcode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("PricingErrorCode");
+				this.SetAttributeValue("pricingerrorcode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("PricingErrorCode");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the ID of the process.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("processid")]
+		public System.Nullable<System.Guid> ProcessId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("processid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ProcessId");
+				this.SetAttributeValue("processid", value);
+				this.OnPropertyChanged("ProcessId");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the quote.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("quoteid")]
+		public System.Nullable<System.Guid> QuoteId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("quoteid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("QuoteId");
+				this.SetAttributeValue("quoteid", value);
+				if (value.HasValue)
+				{
+					base.Id = value.Value;
+				}
+				else
+				{
+					base.Id = System.Guid.Empty;
+				}
+				this.OnPropertyChanged("QuoteId");
+			}
+		}
+		
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("quoteid")]
+		public override System.Guid Id
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return base.Id;
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.QuoteId = value;
+			}
+		}
+		
+		/// <summary>
+		/// Shows the quote number for customer reference and searching capabilities. The number cannot be modified.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("quotenumber")]
+		public string QuoteNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("quotenumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("QuoteNumber");
+				this.SetAttributeValue("quotenumber", value);
+				this.OnPropertyChanged("QuoteNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Enter the delivery date requested by the customer for all products in the quote.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("requestdeliveryby")]
+		public System.Nullable<System.DateTime> RequestDeliveryBy
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.DateTime>>("requestdeliveryby");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("RequestDeliveryBy");
+				this.SetAttributeValue("requestdeliveryby", value);
+				this.OnPropertyChanged("RequestDeliveryBy");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the version number of the quote for revision history tracking.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("revisionnumber")]
+		public System.Nullable<int> RevisionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("revisionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// Select a shipping method for deliveries sent to this address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shippingmethodcode")]
+		public virtual Quote_ShippingMethodCode? ShippingMethodCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Quote_ShippingMethodCode?)(EntityOptionSetEnum.GetEnum(this, "shippingmethodcode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShippingMethodCode");
+				this.SetAttributeValue("shippingmethodcode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("ShippingMethodCode");
+			}
+		}
+		
+		/// <summary>
+		/// Unique identifier of the shipping address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_addressid")]
+		public System.Nullable<System.Guid> ShipTo_AddressId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("shipto_addressid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_AddressId");
+				this.SetAttributeValue("shipto_addressid", value);
+				this.OnPropertyChanged("ShipTo_AddressId");
+			}
+		}
+		
+		/// <summary>
+		/// Type the city for the customer's shipping address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_city")]
+		public string ShipTo_City
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_city");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_City");
+				this.SetAttributeValue("shipto_city", value);
+				this.OnPropertyChanged("ShipTo_City");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the complete Ship To address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_composite")]
+		public string ShipTo_Composite
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_composite");
+			}
+		}
+		
+		/// <summary>
+		/// Type the primary contact name at the customer's shipping address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_contactname")]
+		public string ShipTo_ContactName
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_contactname");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_ContactName");
+				this.SetAttributeValue("shipto_contactname", value);
+				this.OnPropertyChanged("ShipTo_ContactName");
+			}
+		}
+		
+		/// <summary>
+		/// Type the country or region for the customer's shipping address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_country")]
+		public string ShipTo_Country
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_country");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_Country");
+				this.SetAttributeValue("shipto_country", value);
+				this.OnPropertyChanged("ShipTo_Country");
+			}
+		}
+		
+		/// <summary>
+		/// Type the fax number for the customer's shipping address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_fax")]
+		public string ShipTo_Fax
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_fax");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_Fax");
+				this.SetAttributeValue("shipto_fax", value);
+				this.OnPropertyChanged("ShipTo_Fax");
+			}
+		}
+		
+		/// <summary>
+		/// Select the freight terms to make sure shipping orders are processed correctly.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_freighttermscode")]
+		public virtual Quote_ShipTo_FreightTermsCode? ShipTo_FreightTermsCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return ((Quote_ShipTo_FreightTermsCode?)(EntityOptionSetEnum.GetEnum(this, "shipto_freighttermscode")));
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_FreightTermsCode");
+				this.SetAttributeValue("shipto_freighttermscode", value.HasValue ? new Microsoft.Xrm.Sdk.OptionSetValue((int)value) : null);
+				this.OnPropertyChanged("ShipTo_FreightTermsCode");
+			}
+		}
+		
+		/// <summary>
+		/// Type the first line of the customer's shipping address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_line1")]
+		public string ShipTo_Line1
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_line1");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_Line1");
+				this.SetAttributeValue("shipto_line1", value);
+				this.OnPropertyChanged("ShipTo_Line1");
+			}
+		}
+		
+		/// <summary>
+		/// Type the second line of the customer's shipping address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_line2")]
+		public string ShipTo_Line2
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_line2");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_Line2");
+				this.SetAttributeValue("shipto_line2", value);
+				this.OnPropertyChanged("ShipTo_Line2");
+			}
+		}
+		
+		/// <summary>
+		/// Type the third line of the shipping address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_line3")]
+		public string ShipTo_Line3
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_line3");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_Line3");
+				this.SetAttributeValue("shipto_line3", value);
+				this.OnPropertyChanged("ShipTo_Line3");
+			}
+		}
+		
+		/// <summary>
+		/// Type a name for the customer's shipping address, such as "Headquarters" or "Field office", to identify the address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_name")]
+		public string ShipTo_Name
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_name");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_Name");
+				this.SetAttributeValue("shipto_name", value);
+				this.OnPropertyChanged("ShipTo_Name");
+			}
+		}
+		
+		/// <summary>
+		/// Type the ZIP Code or postal code for the shipping address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_postalcode")]
+		public string ShipTo_PostalCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_postalcode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_PostalCode");
+				this.SetAttributeValue("shipto_postalcode", value);
+				this.OnPropertyChanged("ShipTo_PostalCode");
+			}
+		}
+		
+		/// <summary>
+		/// Type the state or province for the shipping address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_stateorprovince")]
+		public string ShipTo_StateOrProvince
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_stateorprovince");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_StateOrProvince");
+				this.SetAttributeValue("shipto_stateorprovince", value);
+				this.OnPropertyChanged("ShipTo_StateOrProvince");
+			}
+		}
+		
+		/// <summary>
+		/// Type the phone number for the customer's shipping address.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("shipto_telephone")]
+		public string ShipTo_Telephone
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("shipto_telephone");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("ShipTo_Telephone");
+				this.SetAttributeValue("shipto_telephone", value);
+				this.OnPropertyChanged("ShipTo_Telephone");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the ID of the stage.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("stageid")]
+		public System.Nullable<System.Guid> StageId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<System.Guid>>("stageid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StageId");
+				this.SetAttributeValue("stageid", value);
+				this.OnPropertyChanged("StageId");
+			}
+		}
+		
+		/// <summary>
+		/// Shows whether the quote is draft, active, won, or closed. Only draft quotes can be edited.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statecode")]
+		public System.Nullable<CrmEarlyBound.QuoteState> StateCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				Microsoft.Xrm.Sdk.OptionSetValue optionSet = this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statecode");
+				if ((optionSet != null))
+				{
+					return ((CrmEarlyBound.QuoteState)(System.Enum.ToObject(typeof(CrmEarlyBound.QuoteState), optionSet.Value)));
+				}
+				else
+				{
+					return null;
+				}
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StateCode");
+				if ((value == null))
+				{
+					this.SetAttributeValue("statecode", null);
+				}
+				else
+				{
+					this.SetAttributeValue("statecode", new Microsoft.Xrm.Sdk.OptionSetValue(((int)(value))));
+				}
+				this.OnPropertyChanged("StateCode");
+			}
+		}
+		
+		/// <summary>
+		/// Select the quote's status.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("statuscode")]
+		public Microsoft.Xrm.Sdk.OptionSetValue StatusCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.OptionSetValue>("statuscode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("StatusCode");
+				this.SetAttributeValue("statuscode", value);
+				this.OnPropertyChanged("StatusCode");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("timezoneruleversionnumber")]
+		public System.Nullable<int> TimeZoneRuleVersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("timezoneruleversionnumber");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TimeZoneRuleVersionNumber");
+				this.SetAttributeValue("timezoneruleversionnumber", value);
+				this.OnPropertyChanged("TimeZoneRuleVersionNumber");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the total amount due, calculated as the sum of the products, discounts, freight, and taxes for the quote.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totalamount")]
+		public Microsoft.Xrm.Sdk.Money TotalAmount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totalamount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TotalAmount");
+				this.SetAttributeValue("totalamount", value);
+				this.OnPropertyChanged("TotalAmount");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the Total Amount field converted to the system's default base currency for reporting purposes. The calculation uses the exchange rate specified in the Currencies area.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totalamount_base")]
+		public Microsoft.Xrm.Sdk.Money TotalAmount_Base
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totalamount_base");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the total product amount for the quote, minus any discounts. This value is added to freight and tax amounts in the calculation for the total amount due for the quote.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totalamountlessfreight")]
+		public Microsoft.Xrm.Sdk.Money TotalAmountLessFreight
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totalamountlessfreight");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TotalAmountLessFreight");
+				this.SetAttributeValue("totalamountlessfreight", value);
+				this.OnPropertyChanged("TotalAmountLessFreight");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the Pre-Freight Amount converted field to the system's default base currency for reporting purposes. The calculation uses the exchange rate specified in the Currencies area.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totalamountlessfreight_base")]
+		public Microsoft.Xrm.Sdk.Money TotalAmountLessFreight_Base
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totalamountlessfreight_base");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the total discount amount, based on the discount price and rate entered on the quote.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totaldiscountamount")]
+		public Microsoft.Xrm.Sdk.Money TotalDiscountAmount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totaldiscountamount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TotalDiscountAmount");
+				this.SetAttributeValue("totaldiscountamount", value);
+				this.OnPropertyChanged("TotalDiscountAmount");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the Total Discount Amount converted field to the system's default base currency for reporting purposes. The calculation uses the exchange rate specified in the Currencies area.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totaldiscountamount_base")]
+		public Microsoft.Xrm.Sdk.Money TotalDiscountAmount_Base
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totaldiscountamount_base");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the sum of all existing and write-in products included on the quote, based on the specified price list and quantities.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totallineitemamount")]
+		public Microsoft.Xrm.Sdk.Money TotalLineItemAmount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totallineitemamount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TotalLineItemAmount");
+				this.SetAttributeValue("totallineitemamount", value);
+				this.OnPropertyChanged("TotalLineItemAmount");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the Detail Amount field converted to the system's default base currency. The calculation uses the exchange rate specified in the Currencies area.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totallineitemamount_base")]
+		public Microsoft.Xrm.Sdk.Money TotalLineItemAmount_Base
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totallineitemamount_base");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the total of the Manual Discount amounts specified on all products included in the quote. This value is reflected in the Detail Amount field on the quote and is added to any discount amount or rate specified on the quote
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totallineitemdiscountamount")]
+		public Microsoft.Xrm.Sdk.Money TotalLineItemDiscountAmount
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totallineitemdiscountamount");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TotalLineItemDiscountAmount");
+				this.SetAttributeValue("totallineitemdiscountamount", value);
+				this.OnPropertyChanged("TotalLineItemDiscountAmount");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the Total Line Item Discount Amount field converted to the system's default base currency for reporting purposes. The calculation uses the exchange rate specified in the Currencies area.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totallineitemdiscountamount_base")]
+		public Microsoft.Xrm.Sdk.Money TotalLineItemDiscountAmount_Base
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totallineitemdiscountamount_base");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the total of the Tax amounts specified on all products included in the quote, included in the Total Amount due calculation for the quote.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totaltax")]
+		public Microsoft.Xrm.Sdk.Money TotalTax
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totaltax");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TotalTax");
+				this.SetAttributeValue("totaltax", value);
+				this.OnPropertyChanged("TotalTax");
+			}
+		}
+		
+		/// <summary>
+		/// Shows the Total Tax field converted to the system's default base currency for reporting purposes. The calculation uses the exchange rate specified in the Currencies area.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("totaltax_base")]
+		public Microsoft.Xrm.Sdk.Money TotalTax_Base
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.Money>("totaltax_base");
+			}
+		}
+		
+		/// <summary>
+		/// Choose the local currency for the record to make sure budgets are reported in the correct currency.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("transactioncurrencyid")]
+		public Microsoft.Xrm.Sdk.EntityReference TransactionCurrencyId
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<Microsoft.Xrm.Sdk.EntityReference>("transactioncurrencyid");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TransactionCurrencyId");
+				this.SetAttributeValue("transactioncurrencyid", value);
+				this.OnPropertyChanged("TransactionCurrencyId");
+			}
+		}
+		
+		/// <summary>
+		/// For internal use only.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("traversedpath")]
+		public string TraversedPath
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<string>("traversedpath");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("TraversedPath");
+				this.SetAttributeValue("traversedpath", value);
+				this.OnPropertyChanged("TraversedPath");
+			}
+		}
+		
+		/// <summary>
+		/// Time zone code that was in use when the record was created.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("utcconversiontimezonecode")]
+		public System.Nullable<int> UTCConversionTimeZoneCode
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<int>>("utcconversiontimezonecode");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("UTCConversionTimeZoneCode");
+				this.SetAttributeValue("utcconversiontimezonecode", value);
+				this.OnPropertyChanged("UTCConversionTimeZoneCode");
+			}
+		}
+		
+		/// <summary>
+		/// Version number of the quote.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("versionnumber")]
+		public System.Nullable<long> VersionNumber
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<long>>("versionnumber");
+			}
+		}
+		
+		/// <summary>
+		/// Select whether the products included in the quote should be shipped to the specified address or held until the customer calls with further pick up or delivery instructions.
+		/// </summary>
+		[Microsoft.Xrm.Sdk.AttributeLogicalNameAttribute("willcall")]
+		public System.Nullable<bool> WillCall
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.GetAttributeValue<System.Nullable<bool>>("willcall");
+			}
+			[System.Diagnostics.DebuggerNonUserCode()]
+			set
+			{
+				this.OnPropertyChanging("WillCall");
+				this.SetAttributeValue("willcall", value);
+				this.OnPropertyChanged("WillCall");
+			}
+		}
+		
+		/// <summary>
+		/// Constructor for populating via LINQ queries given a LINQ anonymous type
+		/// <param name="anonymousType">LINQ anonymous type.</param>
+		/// </summary>
+		[System.Diagnostics.DebuggerNonUserCode()]
+		public Quote(object anonymousType) : 
+				this()
+		{
+            foreach (var p in anonymousType.GetType().GetProperties())
+            {
+                var value = p.GetValue(anonymousType, null);
+                var name = p.Name.ToLower();
+            
+                if (name.EndsWith("enum") && value.GetType().BaseType == typeof(System.Enum))
+                {
+                    value = new Microsoft.Xrm.Sdk.OptionSetValue((int) value);
+                    name = name.Remove(name.Length - "enum".Length);
+                }
+            
+                switch (name)
+                {
+                    case "id":
+                        base.Id = (System.Guid)value;
+                        Attributes["quoteid"] = base.Id;
+                        break;
+                    case "quoteid":
+                        var id = (System.Nullable<System.Guid>) value;
+                        if(id == null){ continue; }
+                        base.Id = id.Value;
+                        Attributes[name] = base.Id;
+                        break;
+                    case "formattedvalues":
+                        // Add Support for FormattedValues
+                        FormattedValues.AddRange((Microsoft.Xrm.Sdk.FormattedValueCollection)value);
+                        break;
+                    default:
+                        Attributes[name] = value;
+                        break;
+                }
+            }
+		}
+	}
+	
 	/// <summary>
 	/// Product line item in a quote. The details include such information as product ID, description, quantity, and cost.
 	/// </summary>
@@ -7622,6 +9355,18 @@ namespace CrmEarlyBound
 			get
 			{
 				return this.CreateQuery<CrmEarlyBound.PhoneCall>();
+			}
+		}
+		
+		/// <summary>
+		/// Gets a binding to the set of all <see cref="CrmEarlyBound.Quote"/> entities.
+		/// </summary>
+		public System.Linq.IQueryable<CrmEarlyBound.Quote> QuoteSet
+		{
+			[System.Diagnostics.DebuggerNonUserCode()]
+			get
+			{
+				return this.CreateQuery<CrmEarlyBound.Quote>();
 			}
 		}
 		
