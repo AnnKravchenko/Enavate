@@ -24,17 +24,26 @@ namespace Plugins
                     Quote quote = context.PostEntityImages["PostQuote"].ToEntity<Quote>();
                     List<OpportunityProduct> OpportunityProductList = xrm.OpportunityProductSet.Where(p => p.OpportunityId == quote.OpportunityId).ToList();
                     List<QuoteDetail> QuoteProductList = xrm.QuoteDetailSet.Where(p => p.QuoteId.Id == quote.Id).ToList();
-                    for (int i = 0; i < OpportunityProductList.Count(); i++)
+                    if (OpportunityProductList.Count == QuoteProductList.Count)
                     {
-                        //if(QuoteProductList.ElementAt(i).ProductDescription==OpportunityProductList.ElementAt(i).ProductDescription)
-                        //{
-                        QuoteProductList.ElementAt(i).new_Comment = OpportunityProductList.ElementAt(i).new_Comment;
-                        QuoteProductList.ElementAt(i).new_Country = OpportunityProductList.ElementAt(i).new_Country;
-                        xrm.UpdateObject(QuoteProductList.ElementAt(i));
-
-                        //}
+                        for (int i = 0; i < QuoteProductList.Count(); i++)
+                        {
+                            OpportunityProduct prod = OpportunityProductList.Where(p => p.ProductDescription == QuoteProductList.ElementAt(i).ProductDescription).FirstOrDefault();
+                            if(prod != null)
+                            {
+                                QuoteProductList.ElementAt(i).new_Comment = prod.new_Comment;
+                                QuoteProductList.ElementAt(i).new_Country = prod.new_Country;
+                                xrm.UpdateObject(QuoteProductList.ElementAt(i));
+                            }
+                            /*if(QuoteProductList.ElementAt(i).ProductDescription==OpportunityProductList.ElementAt(i).ProductDescription)
+                            {
+                                QuoteProductList.ElementAt(i).new_Comment = OpportunityProductList.ElementAt(i).new_Comment;
+                                QuoteProductList.ElementAt(i).new_Country = OpportunityProductList.ElementAt(i).new_Country;
+                                xrm.UpdateObject(QuoteProductList.ElementAt(i));
+                            }*/
+                        }
+                        xrm.SaveChanges();
                     }
-                    xrm.SaveChanges();
                 }
             }
             catch(Exception ex)
