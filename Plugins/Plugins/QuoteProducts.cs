@@ -35,12 +35,6 @@ namespace Plugins
                                 QuoteProductList.ElementAt(i).new_Country = prod.new_Country;
                                 xrm.UpdateObject(QuoteProductList.ElementAt(i));
                             }
-                            /*if(QuoteProductList.ElementAt(i).ProductDescription==OpportunityProductList.ElementAt(i).ProductDescription)
-                            {
-                                QuoteProductList.ElementAt(i).new_Comment = OpportunityProductList.ElementAt(i).new_Comment;
-                                QuoteProductList.ElementAt(i).new_Country = OpportunityProductList.ElementAt(i).new_Country;
-                                xrm.UpdateObject(QuoteProductList.ElementAt(i));
-                            }*/
                         }
                         xrm.SaveChanges();
                     }
