@@ -19,38 +19,29 @@ namespace Plugins
             CrmServiceContext xrm = new CrmServiceContext(service);
             try
             {
-                if (context.PostEntityImages.Contains("PostQuote") && context.PostEntityImages["PostQuote"] is Entity)
+                if (context.PostEntityImages.Contains("PostQuoteProduct") && context.PostEntityImages["PostQuoteProduct"] is Entity)
                 {
-                    Quote quote = context.PostEntityImages["PostQuote"].ToEntity<Quote>();
-                    List<OpportunityProduct> OpportunityProductList = xrm.OpportunityProductSet.Where(p => p.OpportunityId == quote.OpportunityId).ToList();
-                    List<QuoteDetail> QuoteProductList = xrm.QuoteDetailSet.Where(p => p.QuoteId.Id == quote.Id).ToList();
-                    if (OpportunityProductList.Count == QuoteProductList.Count)
+                    QuoteDetail QuoteProduct = context.PostEntityImages["PostQuoteProduct"].ToEntity<QuoteDetail>();
+                    Quote quote = xrm.QuoteSet.Where(p => p.Id == QuoteProduct.QuoteId.Id).FirstOrDefault();
+                    OpportunityProduct oppProd;
+                    //Looking for opportunity product in related opportunity 
+                    if (!(bool)QuoteProduct.IsProductOverridden)//if QuoteProduct is existing product
+                    { oppProd = xrm.OpportunityProductSet.Where(p => p.ProductId == QuoteProduct.ProductId && p.OpportunityId == quote.OpportunityId).FirstOrDefault();}
+                    else//if QuoteProduct is write-in product
+                    { oppProd = xrm.OpportunityProductSet.Where(p => p.OpportunityId == quote.OpportunityId && p.ProductDescription == QuoteProduct.ProductDescription).FirstOrDefault(); }
+                    //Updating custom fields
+                    if (oppProd != null)
                     {
-                        for (int i = 0; i < QuoteProductList.Count(); i++)
-                        {
-                            OpportunityProduct prod = OpportunityProductList.Where(p => p.ProductDescription == QuoteProductList.ElementAt(i).ProductDescription).FirstOrDefault();
-                            if(prod != null)
-                            {
-                                QuoteProductList.ElementAt(i).new_Comment = prod.new_Comment;
-                                QuoteProductList.ElementAt(i).new_Country = prod.new_Country;
-                                xrm.UpdateObject(QuoteProductList.ElementAt(i));
-                            }
-                        }
-                        xrm.SaveChanges();
+                        QuoteProduct.new_Comment = oppProd.new_Comment;
+                        QuoteProduct.new_Country = oppProd.new_Country;
                     }
+                    service.Update(QuoteProduct);
                 }
             }
             catch(Exception ex)
             {
                 throw new InvalidPluginExecutionException($"An error occurred in QuoteProducts plug-in: {ex.Message}");
-            }
-            
-            /*
-             * get quote id from image
-             * => opportunity => opportunity products => comment and country field
-             * (quote products where quoteid = image.id) -> chnge comment and country 
-            */
-            
+            }   
         }
     }
 }
