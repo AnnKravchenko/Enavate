@@ -26,9 +26,9 @@ namespace Plugins
                     OpportunityProduct oppProd;
                     //Looking for opportunity product in related opportunity 
                     if (!(bool)QuoteProduct.IsProductOverridden)//if QuoteProduct is existing product
-                    { oppProd = xrm.OpportunityProductSet.Where(p => p.ProductId == QuoteProduct.ProductId && p.OpportunityId == quote.OpportunityId).FirstOrDefault();}
+                    { oppProd = xrm.OpportunityProductSet.Where(p => p.ProductId == QuoteProduct.ProductId && p.OpportunityId == quote.OpportunityId && p.SequenceNumber==QuoteProduct.SequenceNumber).FirstOrDefault();}
                     else//if QuoteProduct is write-in product
-                    { oppProd = xrm.OpportunityProductSet.Where(p => p.OpportunityId == quote.OpportunityId && p.ProductDescription == QuoteProduct.ProductDescription).FirstOrDefault(); }
+                    { oppProd = xrm.OpportunityProductSet.Where(p => p.OpportunityId == quote.OpportunityId && p.ProductDescription == QuoteProduct.ProductDescription && p.SequenceNumber == QuoteProduct.SequenceNumber).FirstOrDefault(); }
                     //Updating custom fields
                     if (oppProd != null)
                     {
