@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Calculation.cs" />
+    <Compile Include="CalculationOpportunity.cs" />
     <Compile Include="Entities.cs" />
     <Compile Include="OptionSets.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
