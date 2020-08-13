@@ -20,29 +20,27 @@ namespace CustomCalculation
             {
 
                 EntityReference entity = (EntityReference)context.InputParameters["Target"];
-                //throw new InvalidPluginExecutionException($"{entity.Id.ToString()} ");
                 try
                 {
-                    switch (entity.LogicalName)
-                    //if(entity.LogicalName=="opportunityproduct")
+                    if(entity.LogicalName=="opportunityproduct")
                     {
-                        case "opportunity":
-
-                            break;
-                        case "opportunityproduct":
-                            //OpportunityProduct product = entity.ToEntity<OpportunityProduct>();
-                            OpportunityProduct product = xrm.OpportunityProductSet.Where(p => p.Id == entity.Id).FirstOrDefault();
-                            
-                            //throw new InvalidPluginExecutionException(product != null ? "not null" : " null");
+                        //get opportunity product
+                        OpportunityProduct product = xrm.OpportunityProductSet.Where(p => p.Id == entity.Id).FirstOrDefault();
+                        if (product != null)
+                        {
+                            //base amount
                             decimal total = product.Quantity.Value * product.PricePerUnit.Value;
-                            product.new_CustomDiscount = new Money(total * (decimal)0.15);
                             product.BaseAmount = new Money(total);
-                            product.ExtendedAmount = new Money((decimal)(product.BaseAmount.Value - product.new_CustomDiscount.Value-product.ManualDiscountAmount.Value+product.Tax.Value));
+                            //discount and tax
+                            product.new_CustomDiscount = new Money(total * (decimal)0.15);
+                            decimal manualDiscount = product.ManualDiscountAmount != null ? product.ManualDiscountAmount.Value : (decimal)0;
+                            decimal tax = product.Tax != null ? product.Tax.Value : (decimal)0;
+                            //extended amount
+                            product.ExtendedAmount = new Money((decimal)(product.BaseAmount.Value - product.new_CustomDiscount.Value - manualDiscount + tax));
+                            //update product
                             xrm.UpdateObject(product);
-                            xrm.SaveChanges();                            
-                            break;
-                        default:
-                            break;
+                            xrm.SaveChanges();
+                        }
                     }
                 }
                 catch(Exception ex)
