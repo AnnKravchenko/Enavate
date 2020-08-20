@@ -1,0 +1,9 @@
+{
+  "name": "lead",
+  "version": "0.0.0",
+  "description": "Lead",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  }
+}
