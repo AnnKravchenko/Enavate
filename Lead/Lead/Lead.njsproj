@@ -11,7 +11,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>4a9147c2-51d2-4085-b882-50e5462233c5</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>server.js</StartupFile>
+    <StartupFile>Lead_Form.js</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -28,13 +28,10 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="OptionSetShowFields.js">
+    <Content Include="Activities.html">
       <SubType>Code</SubType>
     </Content>
-    <Content Include="Page1.html">
-      <SubType>Code</SubType>
-    </Content>
-    <Content Include="server.js" />
+    <Content Include="Lead_Form.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
   </ItemGroup>
