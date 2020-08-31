@@ -1,17 +1,18 @@
 function hideFieldsOnCreation() {
     var topic = Xrm.Page.getAttribute("subject").getValue()
+    var attributes = []
     if (topic === null) {
-        var attributes = []
+        
         var ad = 'address1_composite'
         Xrm.Page.data.entity.attributes.forEach(function (element, index) {
-            if (element.getName()!==ad)
+            if (element.getName() !== ad)
                 attributes[index] = element.getName()
         })
         attributes.forEach(function (element, index) {
-            if (Xrm.Page.getControl(element) !== null || element.startsWith('address1_') ) {
+            if (Xrm.Page.getControl(element) !== null || element.startsWith('address1_')) {
                 if (Xrm.Page.getAttribute(element).getRequiredLevel() === "none") {
-                    if (element.startsWith('address1_')) 
-                        Xrm.Page.getControl('address1_composite_compositionLinkControl_'+element).setVisible(false)
+                    if (element.startsWith('address1_'))
+                        Xrm.Page.getControl('address1_composite_compositionLinkControl_' + element).setVisible(false)
                     else
                         Xrm.Page.getControl(element).setVisible(false)
                 } else {
@@ -20,6 +21,16 @@ function hideFieldsOnCreation() {
                     else
                         Xrm.Page.getControl(element).setVisible(true)
                 }
+            }
+        })
+    } else {
+        attributes.forEach(function (element, index) {
+            if (Xrm.Page.getControl(element) !== null || element.startsWith('address1_')) {
+                if (element.startsWith('address1_'))
+                    Xrm.Page.getControl('address1_composite_compositionLinkControl_' + element).setVisible(true)
+                else
+                    Xrm.Page.getControl(element).setVisible(true)
+
             }
         })
     }
