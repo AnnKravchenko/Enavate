@@ -3,7 +3,7 @@
 var LeadId = Xrm.Page.data.entity.getId()
 var id = LeadId.slice(1, LeadId.length-1)
 
-Xrm.WebApi.retrieveMultipleRecords("task", "?$filter=_regardingobjectid_value eq "+id.toLowerCase()).then(
+Xrm.WebApi.retrieveMultipleRecords("activitypointer", "?$filter=_regardingobjectid_value eq "+id.toLowerCase()).then(
     function success(result) {
         for (var i = 0; i < result.entities.length; i++) {
             var li = document.createElement("li")
@@ -24,9 +24,9 @@ Xrm.WebApi.retrieveMultipleRecords("task", "?$filter=_regardingobjectid_value eq
             document.getElementById("tasks").appendChild(li)
         }
         if (result.entities.length !== 0)
-            document.getElementById("related").innerHTML = "Related Tasks: "
+            document.getElementById("related").innerHTML = "Related Activities: "
         else
-            document.getElementById("related").innerHTML = "No related tasks yet"
+            document.getElementById("related").innerHTML = "No related activities yet"
     },
     function (error) {
         console.log(error.message)
