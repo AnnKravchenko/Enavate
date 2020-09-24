@@ -1,0 +1,9 @@
+{
+  "name": "ribbon-workbench",
+  "version": "0.0.0",
+  "description": "Ribbon Workbench",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  }
+}
