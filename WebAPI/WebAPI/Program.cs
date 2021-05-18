@@ -77,9 +77,8 @@ namespace WebAPI
                             string json = await response.Content.ReadAsStringAsync();
                             JObject returnedData = JObject.Parse(json);
                             Console.WriteLine(returnedData);
-                            //Console.ReadLine();
                             s.UpdateSqlRecord(returnedData);
-                            Console.WriteLine(response.ToString());
+                            
                         }
                         else // update record
                         {
@@ -87,8 +86,6 @@ namespace WebAPI
                             HttpContent content = new StringContent(accounts[i].ToString(), Encoding.UTF8, "application/json"); //JObject of the data to be posted.
                             HttpResponseMessage response = await PatchAsync(client, $"{client.BaseAddress}/accounts({accounts[i]["accountid"].ToString()})", content);
                             Console.WriteLine(response.ToString());
-                            Console.ReadLine();
-
                         }
                     }
                     catch (Exception ex)

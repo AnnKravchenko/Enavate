@@ -34,22 +34,28 @@ namespace WebAPI
                         {
                             while (reader.Read())
                             {
-                                JObject acc = new JObject
-                                {
-                                    { "name",  reader["accountname"].ToString() },
-                                    { "new_cash", reader["new_cash"].ToString() },
-                                    { "emailaddress1", reader["emailaddress1"].ToString() }
-                                    //{ "parentaccountid@odata.bind", "/accounts(f8ccd9f5-26a4-eb11-b1ac-000d3ab2f628)"}
-                                };
+                                JObject acc = new JObject { };
                                 if (reader["accountid"].ToString() != "")
                                 {
                                     acc.Add("accountid", reader["accountid"].ToString());
+                                }
+                                if (reader["new_cash"].ToString() != "")
+                                {
+                                    acc.Add("new_cash", Convert.ToDouble(reader["new_cash"]));
+                                }
+                                if (reader["accountname"].ToString() != "")
+                                {
+                                    acc.Add("name", reader["accountname"].ToString());
+                                }
+                                if (reader["emailaddress1"].ToString() != "")
+                                {
+                                    acc.Add("emailaddress1", reader["emailaddress1"].ToString());
                                 }
                                 accs.Add(acc);
                             }
                         }
                     }
-                    cnn.Close();
+                    //cnn.Close();
                     
                 }
                 catch (Exception ex)
@@ -62,18 +68,33 @@ namespace WebAPI
         }
         public void UpdateSqlRecord(JObject acc)
         {
+            List<string> filters = new List<string>();
             SqlConnection cnn = this.Connection;
             try
             {
-
-                cnn.Open();
                 using (SqlCommand command = cnn.CreateCommand())
                 {
-                    command.CommandText = "update accounts.dbo.Clients set accountid=@id where accountname=@name and new_cash=@nc and emailadress1=@em";
+                    //command.CommandText = "update accounts.dbo.Clients set accountid=@id where ";
                     command.Parameters.AddWithValue("@id", acc["accountid"].ToString());
-                    command.Parameters.AddWithValue("@name", acc["name"].ToString());
-                    command.Parameters.AddWithValue("@nc", acc["new_cash"].ToString());
-                    command.Parameters.AddWithValue("@em", acc["emailaddress1"].ToString());
+                    if (acc["name"].ToString()!="")
+                    {
+                        command.Parameters.AddWithValue("@name", acc["name"].ToString());
+                        filters.Add("accountname=@name");
+                    }
+                    if (acc["new_cash"].ToString() != "")
+                    {
+                        Console.WriteLine("here");
+                        command.Parameters.AddWithValue("@nc", Convert.ToDouble(acc["new_cash"]));
+                        filters.Add("new_cash=@nc");
+                    }
+                    if (acc["emailaddress1"].ToString() != "")
+                    {
+                        command.Parameters.AddWithValue("@nc", acc["emailaddress1"].ToString());
+                        filters.Add("emailaddress1=@em");
+                    }
+                    string filter = String.Join(" and ", filters);
+                    command.CommandText= "update accounts.dbo.Clients set accountid=@id where "+filter;
+                    Console.WriteLine(command.CommandText);
                     command.ExecuteNonQuery();
 
                 }
