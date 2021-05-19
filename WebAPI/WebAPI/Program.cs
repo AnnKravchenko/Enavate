@@ -50,8 +50,6 @@ namespace WebAPI
 
             SQL s = new SQL();
             JArray accounts = new JArray(s.ConnectionData);
-            //Console.WriteLine(accounts);
-
             
             for (int i = 0; i < accounts.Count; i++)
             {
@@ -67,7 +65,6 @@ namespace WebAPI
                         client.DefaultRequestHeaders.Add("OData-Version", "4.0");
                         client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
                         Console.WriteLine(accounts[i]);
-                        //Console.ReadLine();
 
                         if (accounts[i]["accountid"] == null)//create record
                         {
@@ -82,7 +79,6 @@ namespace WebAPI
                         }
                         else // update record
                         {
-                            //client.DefaultRequestHeaders.Add("If-Match", "*");
                             HttpContent content = new StringContent(accounts[i].ToString(), Encoding.UTF8, "application/json"); //JObject of the data to be posted.
                             HttpResponseMessage response = await PatchAsync(client, $"{client.BaseAddress}/accounts({accounts[i]["accountid"].ToString()})", content);
                             Console.WriteLine(response.ToString());
@@ -95,8 +91,7 @@ namespace WebAPI
                     }
                 }
             }
-            Console.ReadLine();
-            
+            s.Dispose();
         }
         public static async Task<HttpResponseMessage> PatchAsync(HttpClient client, string requestUri, HttpContent content)
         {

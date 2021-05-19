@@ -8,12 +8,17 @@ using Newtonsoft.Json.Linq;
 
 namespace WebAPI
 {
-    class SQL
+    class SQL : IDisposable
     {
         public SQL()
         {
             string connectionString = @"Data Source=PC-AKRAVCHENKO2;Initial Catalog = accounts;Integrated Security=SSPI;";
             this.Connection = new SqlConnection(connectionString);
+        }
+        public void Dispose()
+        {
+            this.Connection.Close();
+            Console.WriteLine("Connection Closed");
         }
         public SqlConnection Connection { get; set; }
         public JArray ConnectionData
@@ -55,8 +60,6 @@ namespace WebAPI
                             }
                         }
                     }
-                    //cnn.Close();
-                    
                 }
                 catch (Exception ex)
                 {
@@ -98,7 +101,6 @@ namespace WebAPI
                     command.ExecuteNonQuery();
 
                 }
-                cnn.Close();
 
             }
             catch (Exception ex)
