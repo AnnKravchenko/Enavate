@@ -91,6 +91,7 @@ namespace WebAPI
                     }
                 }
             }
+            Console.ReadLine();
             s.Dispose();
         }
         public static async Task<HttpResponseMessage> PatchAsync(HttpClient client, string requestUri, HttpContent content)
