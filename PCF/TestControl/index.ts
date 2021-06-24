@@ -1,11 +1,21 @@
 import {IInputs, IOutputs} from "./generated/ManifestTypes";
 
+interface IToggle {
+	defaultValue: boolean | undefined,
+	currentValue: boolean | undefined,
+	trueLable: string,
+	falseLabel: string
+}
+
 export class TestControl implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
-	private _labelElement: HTMLLabelElement;
+	private _labelElement: HTMLDivElement;
+	private _checkBoxElement: HTMLInputElement;
 	private _container: HTMLDivElement;
 	private _context: ComponentFramework.Context<IInputs>;
+	private _notifyOutputChanged: () => void;
 
+	private toggle: IToggle;
 	/**
 	 * Empty constructor.
 	 */
@@ -25,11 +35,38 @@ export class TestControl implements ComponentFramework.StandardControl<IInputs, 
 	public init(context: ComponentFramework.Context<IInputs>, notifyOutputChanged: () => void, state: ComponentFramework.Dictionary, container:HTMLDivElement): void
 	{
 		// Add control initialization code
+
+		this._notifyOutputChanged = notifyOutputChanged;
 		this._context = context;
 		this._container = container;
-		this._labelElement = document.createElement("label");
-		this._labelElement.setAttribute("id", "labelID");
-		this._labelElement.innerHTML = "NA";
+		//toggle init
+		this.toggle = {
+			defaultValue: context.parameters.sampleProperty.attributes?.DefaultValue,
+			currentValue: context.parameters.sampleProperty.raw,
+			trueLable: context.parameters.sampleProperty.attributes?.Options[1].Label ?? "Yes",
+			falseLabel: context.parameters.sampleProperty.attributes?.Options[0].Label ?? "No"
+		};
+
+		//set toggle current value
+		if (this.toggle.currentValue == undefined && this.toggle.defaultValue != null) {
+			this.toggle.currentValue = this.toggle.defaultValue;
+        }
+
+		//create html elements
+		this._checkBoxElement = document.createElement("input");
+		this._labelElement = document.createElement("div");
+
+		this._checkBoxElement.type = "checkbox";
+		this._checkBoxElement.checked = this.toggle.currentValue as boolean;
+
+		this._checkBoxElement.addEventListener('change', (event) => {
+			(event.target && (event.target as HTMLInputElement).checked) ? this.toggle.currentValue = true : this.toggle.currentValue = false;
+			this._labelElement.textContent = this.toggle.currentValue ? this.toggle.trueLable : this.toggle.falseLabel;
+			this._notifyOutputChanged();
+		});
+
+		this._container.appendChild(this._checkBoxElement);
+		this._labelElement.textContent = this.toggle.currentValue ? this.toggle.trueLable : this.toggle.falseLabel;
 		this._container.appendChild(this._labelElement);
 	}
 
@@ -41,8 +78,11 @@ export class TestControl implements ComponentFramework.StandardControl<IInputs, 
 	public updateView(context: ComponentFramework.Context<IInputs>): void
 	{
 		// Add code to update control view
-		this._context = context;
-		this._labelElement.innerHTML = Xrm.Page.data.entity.getId();
+		if (context.parameters.sampleProperty.raw != this.toggle.currentValue) {
+			this.toggle.currentValue = context.parameters.sampleProperty.raw;
+			this._checkBoxElement.checked = this.toggle.currentValue;
+			this._labelElement.textContent = this.toggle.currentValue ? this.toggle.trueLable : this.toggle.falseLabel;
+        }
 	}
 
 	/**
@@ -51,7 +91,9 @@ export class TestControl implements ComponentFramework.StandardControl<IInputs, 
 	 */
 	public getOutputs(): IOutputs
 	{
-		return {};
+		return {
+			sampleProperty: this.toggle.currentValue
+		};
 	}
 
 	/**
