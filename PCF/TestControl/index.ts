@@ -9,10 +9,9 @@ interface IToggle {
 
 export class TestControl implements ComponentFramework.StandardControl<IInputs, IOutputs> {
 
-	private _labelElement: HTMLDivElement;
+	private _labelElement: HTMLLabelElement;
 	private _checkBoxElement: HTMLInputElement;
 	private _container: HTMLDivElement;
-	private _context: ComponentFramework.Context<IInputs>;
 	private _notifyOutputChanged: () => void;
 
 	private toggle: IToggle;
@@ -37,8 +36,8 @@ export class TestControl implements ComponentFramework.StandardControl<IInputs, 
 		// Add control initialization code
 
 		this._notifyOutputChanged = notifyOutputChanged;
-		this._context = context;
-		this._container = container;
+		this._container = document.createElement("div");
+
 		//toggle init
 		this.toggle = {
 			defaultValue: context.parameters.sampleProperty.attributes?.DefaultValue,
@@ -54,20 +53,23 @@ export class TestControl implements ComponentFramework.StandardControl<IInputs, 
 
 		//create html elements
 		this._checkBoxElement = document.createElement("input");
-		this._labelElement = document.createElement("div");
+		this._checkBoxElement.setAttribute("id", "ToggleId");
+		this._labelElement = document.createElement("label");
+		this._labelElement.setAttribute("id", "LabelId");
 
 		this._checkBoxElement.type = "checkbox";
 		this._checkBoxElement.checked = this.toggle.currentValue as boolean;
 
 		this._checkBoxElement.addEventListener('change', (event) => {
 			(event.target && (event.target as HTMLInputElement).checked) ? this.toggle.currentValue = true : this.toggle.currentValue = false;
-			this._labelElement.textContent = this.toggle.currentValue ? this.toggle.trueLable : this.toggle.falseLabel;
+			this._labelElement.innerText = this.toggle.currentValue ? this.toggle.trueLable : this.toggle.falseLabel;
 			this._notifyOutputChanged();
 		});
 
 		this._container.appendChild(this._checkBoxElement);
-		this._labelElement.textContent = this.toggle.currentValue ? this.toggle.trueLable : this.toggle.falseLabel;
+		this._labelElement.innerText = this.toggle.currentValue ? this.toggle.trueLable : this.toggle.falseLabel;
 		this._container.appendChild(this._labelElement);
+		container.appendChild(this._container);
 	}
 
 
