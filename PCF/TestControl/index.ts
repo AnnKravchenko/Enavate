@@ -52,8 +52,15 @@ export class TestControl implements ComponentFramework.StandardControl<IInputs, 
         }
 
 		//create html elements
+		const wrapper = document.createElement("label");
+		wrapper.className = "switch";
+
 		this._checkBoxElement = document.createElement("input");
 		this._checkBoxElement.setAttribute("id", "ToggleId");
+
+		const slider = document.createElement("span");
+		slider.className = "slider";
+
 		this._labelElement = document.createElement("label");
 		this._labelElement.setAttribute("id", "LabelId");
 
@@ -65,8 +72,10 @@ export class TestControl implements ComponentFramework.StandardControl<IInputs, 
 			this._labelElement.innerText = this.toggle.currentValue ? this.toggle.trueLable : this.toggle.falseLabel;
 			this._notifyOutputChanged();
 		});
+		wrapper.appendChild(this._checkBoxElement);
+		wrapper.appendChild(slider);
+		this._container.appendChild(wrapper);
 
-		this._container.appendChild(this._checkBoxElement);
 		this._labelElement.innerText = this.toggle.currentValue ? this.toggle.trueLable : this.toggle.falseLabel;
 		this._container.appendChild(this._labelElement);
 		container.appendChild(this._container);
